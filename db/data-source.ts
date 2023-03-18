@@ -7,12 +7,16 @@ import { tables1678874317812 } from './migrations/1678874317812-tables';
 import { addFavoritesRelationsBetweenArticlesAndUsers1678882196459 } from './migrations/1678882196459-addFavoritesRelationsBetweenArticlesAndUsers';
 import { follows1678982568300 } from './migrations/1678982568300-follows';
 
+import { config } from 'dotenv';
+
+config();
+
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   host: 'localhost',
   port: 5432,
   username: 'postgres',
-  password: 'Bligvorig18@18',
+  password: process.env.DB_PASSWORD,
   database: 'medium-clone',
   entities: [TagEntity, UserEntity, ArticleEntity, FollowEntity],
   migrations: [
